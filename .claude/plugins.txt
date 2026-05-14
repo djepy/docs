@@ -1,0 +1,17 @@
+# Plugins installed at the start of every Claude Code on the web session.
+# One per line. Format: <plugin-name>[@<marketplace-name>]
+# Blank lines and lines starting with # are ignored.
+#
+# The marketplace name is the name declared in its marketplace.json, NOT the
+# GitHub repo. For jeremylongshore/claude-code-plugins the marketplace name is
+# `claude-code-plugins-plus`.
+#
+# To add a plugin: append `<name>@claude-code-plugins-plus` on its own line,
+# commit, and push. The next session will install it automatically.
+
+# Auto-loads AGENTS.md files into the agent's context when relevant.
+agent-context-manager@claude-code-plugins-plus
+
+# Adds the /commit slash command that drafts a conventional-commit message
+# from the current git diff.
+ai-commit-gen@claude-code-plugins-plus
