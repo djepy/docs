@@ -6,6 +6,12 @@
 # GitHub repo. For jeremylongshore/claude-code-plugins the marketplace name is
 # `claude-code-plugins-plus`.
 #
-# Example entries (uncomment to use):
-#   000-jeremy-content-consistency-validator@claude-code-plugins-plus
-000-jeremy-content-consistency-validator@claude-code-plugins-plus
+# To add a plugin: append `<name>@claude-code-plugins-plus` on its own line,
+# commit, and push. The next session will install it automatically.
+
+# Auto-loads AGENTS.md files into the agent's context when relevant.
+agent-context-manager@claude-code-plugins-plus
+
+# Adds the /commit slash command that drafts a conventional-commit message
+# from the current git diff.
+ai-commit-gen@claude-code-plugins-plus
