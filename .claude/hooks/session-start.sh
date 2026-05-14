@@ -3,15 +3,32 @@
 # new Claude Code on the web sandbox starts with the same environment.
 #
 # What it does, in order:
-#   1. Installs @intentsolutionsio/ccpi globally via pnpm.
+#   1. Installs @intentsolutionsio/ccpi (pinned version) globally via pnpm.
 #   2. Registers every marketplace listed in .claude/marketplaces.txt.
 #   3. Installs every plugin listed in .claude/plugins.txt (user scope).
 #
 # Every step is idempotent — re-running the hook is a no-op once everything
 # is in place. The script exits 0 even if individual plugins fail so a single
 # broken entry never blocks the session.
+#
+# Security model & residual risks (read before adding entries):
+#   * ccpi is version-pinned below ($CCPI_VERSION). Bumping requires a code
+#     review of the new release. Do not change to "latest".
+#   * Plugin marketplaces are cloned at HEAD by `claude plugin marketplace
+#     add`. Anyone who can push to a registered marketplace can run code in
+#     your sessions. Only list marketplaces you trust.
+#   * Individual plugins are installed at the marketplace's current HEAD;
+#     `claude plugin install` does not support pinning. Treat .claude/
+#     plugins.txt as a trust boundary — every entry runs code on session
+#     start.
+#   * Setting CLAUDE_SKIP_PLUGIN_AUTOINSTALL=1 in the session env disables
+#     marketplace + plugin restoration (ccpi still installs). Use this as
+#     an emergency kill switch.
 
 set -uo pipefail
+
+# Pinned ccpi release. Audit the changelog before bumping.
+CCPI_VERSION="2.0.0"
 
 # Only act inside Claude Code on the web. Local CLI sessions skip this.
 if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
@@ -39,9 +56,25 @@ if [ -n "$PNPM" ]; then
     *) export PATH="$PNPM_HOME:$PATH" ;;
   esac
   if ! command -v ccpi >/dev/null 2>&1; then
-    "$PNPM" add -g @intentsolutionsio/ccpi || \
+    "$PNPM" add -g "@intentsolutionsio/ccpi@$CCPI_VERSION" || \
       echo "session-start.sh: ccpi install failed (continuing)" >&2
   fi
+fi
+
+# Persist PNPM_HOME and PATH so every subsequent command in the session sees
+# the ccpi binary. Done here (before any potential early exit) so the env is
+# always written when pnpm is available.
+if [ -n "${CLAUDE_ENV_FILE:-}" ] && [ -n "${PNPM_HOME:-}" ]; then
+  {
+    echo "export PNPM_HOME=\"$PNPM_HOME\""
+    echo 'export PATH="$PNPM_HOME:$PATH"'
+  } >> "$CLAUDE_ENV_FILE"
+fi
+
+# Emergency kill switch: skip everything plugin-related but keep ccpi.
+if [ "${CLAUDE_SKIP_PLUGIN_AUTOINSTALL:-}" = "1" ]; then
+  echo "session-start.sh: CLAUDE_SKIP_PLUGIN_AUTOINSTALL=1, skipping marketplaces/plugins" >&2
+  exit 0
 fi
 
 # ---------- 2. Register marketplaces ----------------------------------------
@@ -68,15 +101,6 @@ if command -v claude >/dev/null 2>&1 && [ -f "$PLUGINS_FILE" ]; then
     claude plugin install "$line" --scope user >/dev/null 2>&1 || \
       echo "session-start.sh: failed to install plugin '$line' (continuing)" >&2
   done < "$PLUGINS_FILE"
-fi
-
-# ---------- Persist env for the session -------------------------------------
-
-if [ -n "${CLAUDE_ENV_FILE:-}" ] && [ -n "${PNPM_HOME:-}" ]; then
-  {
-    echo "export PNPM_HOME=\"$PNPM_HOME\""
-    echo 'export PATH="$PNPM_HOME:$PATH"'
-  } >> "$CLAUDE_ENV_FILE"
 fi
 
 exit 0
