@@ -3,9 +3,3 @@
 # Blank lines and lines starting with # are ignored.
 
 jeremylongshore/claude-code-plugins
-
-# Ruflo — multi-agent orchestration framework (ruvnet, MIT, 50k+ stars).
-# Provides ruflo-* plugins below. Hooks intercept every Bash/Write/Edit
-# tool call; if you want to disable that, run:
-#   claude plugin disable ruflo-core@ruflo
-ruvnet/ruflo
