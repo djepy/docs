@@ -1,0 +1,5 @@
+# Marketplaces registered at the start of every Claude Code on the web session.
+# One per line. Format: owner/repo (GitHub shorthand) or full URL.
+# Blank lines and lines starting with # are ignored.
+
+jeremylongshore/claude-code-plugins

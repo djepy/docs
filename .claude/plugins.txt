@@ -1,0 +1,11 @@
+# Plugins installed at the start of every Claude Code on the web session.
+# One per line. Format: <plugin-name>[@<marketplace-name>]
+# Blank lines and lines starting with # are ignored.
+#
+# The marketplace name is the name declared in its marketplace.json, NOT the
+# GitHub repo. For jeremylongshore/claude-code-plugins the marketplace name is
+# `claude-code-plugins-plus`.
+#
+# Example entries (uncomment to use):
+#   000-jeremy-content-consistency-validator@claude-code-plugins-plus
+000-jeremy-content-consistency-validator@claude-code-plugins-plus
