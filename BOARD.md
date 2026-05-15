@@ -21,15 +21,18 @@ between columns by cut/paste.
 
 Things added but not yet started. The manager triages from here.
 
-### Noviqe — pre-cutover preconditions (must all be done before cutover)
+### Noviqe — cutover blockers (must do before flipping noviqe.com)
 
-- [ ] **Remove the "50,000+ happy customers / 4.7★ / 100% trend-verified" placeholder block from the redesigned codebase** — grep for "50,000", "4.7", "trend-verified" in `myproject/src/`; commit and push (@dispatch via packet) [due: 2026-05-15]
-- [ ] Verify whether LED Blue Light Therapy Device and K-Beauty Collagen Sleeping Mask exist in Shopify Products; create any missing (@dispatch + @founder) [due: 2026-05-15]
-- [ ] DSers-map Products 4, 5, 6 to AliExpress suppliers (after Products 4 & 5 confirmed/created) (@founder via browser extension) [due: 2026-05-16]
-- [ ] Install Meta + TikTok pixels in Shopify (@founder via browser extension) [due: 2026-05-16]
-- [ ] Founder personally click-through preview URL end-to-end (homepage → product → cart → checkout) (@founder) [due: 2026-05-17]
+- [ ] Confirm Products 4 & 5 status (active / draft / missing); activate if needed (@founder — answer pending, then @dispatch via packet) [due: 2026-05-16]
+- [ ] **You personally** click-through preview URL end-to-end (homepage → product → cart → checkout) (@founder) [due: 2026-05-17]
 - [ ] Create new Vercel API token in dashboard, save to password manager (NEVER paste to any AI session) (@founder) [due: 2026-05-17]
 - [ ] Screenshot current `noviqe.com` for rollback reference (@founder) [due: 2026-05-17]
+
+### Noviqe — can happen before OR shortly after cutover
+
+- [ ] DSers-map Products 4, 5, 6 to AliExpress suppliers (@dispatch via packet) [due: 2026-05-17]
+- [ ] Install Meta pixel in Shopify (requires Meta Business Manager + Pixel ID) (@founder + @dispatch via packet) [due: 2026-05-18]
+- [ ] Install TikTok pixel via "TikTok for Shopify" app (requires TikTok for Business account) (@founder + @dispatch via packet) [due: 2026-05-18]
 
 ### Noviqe — cutover and post-cutover
 
@@ -67,3 +70,5 @@ Things shipped. Keep the last 30 days here; older items move to `BOARD-archive.m
 - [x] Discount code `MEMDAY20` (20% off $75+, May 20–26) scheduled in Shopify — 2026-05-15
 - [x] Store contact email updated to `gefte@noviqe.com` in Shopify — 2026-05-15
 - [x] LED Galaxy Projector ($49.99 / $89.99) added to Shopify Tech Gadgets collection — 2026-05-15
+- [x] Remove fabricated social-proof copy (50k customers / 4.7★ / trend-verified) from redesigned codebase — commit `4c0c80f` on `claude/dreamy-ptolemy-d624d6` — 2026-05-15
+- [x] Visual verification on preview URL (home + /about) confirmed: Memorial Day banner present, fabricated stats gone — 2026-05-15
