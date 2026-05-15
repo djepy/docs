@@ -23,16 +23,15 @@ Things added but not yet started. The manager triages from here.
 
 ### Noviqe — cutover blockers (must do before flipping noviqe.com)
 
-- [ ] Confirm Products 4 & 5 status (active / draft / missing); activate if needed (@founder — answer pending, then @dispatch via packet) [due: 2026-05-16]
-- [ ] **You personally** click-through preview URL end-to-end (homepage → product → cart → checkout) (@founder) [due: 2026-05-17]
-- [ ] Create new Vercel API token in dashboard, save to password manager (NEVER paste to any AI session) (@founder) [due: 2026-05-17]
-- [ ] Screenshot current `noviqe.com` for rollback reference (@founder) [due: 2026-05-17]
+- [ ] **You personally** click-through preview URL end-to-end (homepage → product → cart → checkout) (@founder) [due: 2026-05-16]
+- [ ] Create new Vercel API token in dashboard, save to password manager (NEVER paste to any AI session) (@founder) [due: 2026-05-16]
+- [ ] Screenshot current `noviqe.com` for rollback reference (@founder) [due: 2026-05-16]
 
 ### Noviqe — can happen before OR shortly after cutover
 
-- [ ] DSers-map Products 4, 5, 6 to AliExpress suppliers (@dispatch via packet) [due: 2026-05-17]
-- [ ] Install Meta pixel in Shopify (requires Meta Business Manager + Pixel ID) (@founder + @dispatch via packet) [due: 2026-05-18]
-- [ ] Install TikTok pixel via "TikTok for Shopify" app (requires TikTok for Business account) (@founder + @dispatch via packet) [due: 2026-05-18]
+- [ ] Install Meta + TikTok pixels — packet ready at `dispatch-handoffs/2026-05-15-pixel-install.md`, needs founder to fetch Meta Pixel ID first (@founder + @dispatch via packet) [due: 2026-05-16]
+- [ ] Add a **backup AliExpress supplier** for either the Collagen Sleeping Mask or the Galaxy Projector (currently both single-mapped to "Stone's Store" — single point of failure) (@dispatch via packet) [due: 2026-05-22]
+- [ ] Watch the first 10 reviews on the $1.39-cost Collagen Sleeping Mask carefully — quality risk; swap supplier if reviews cluster around skin reactions (@founder) [due: ongoing]
 
 ### Noviqe — cutover and post-cutover
 
@@ -72,3 +71,14 @@ Things shipped. Keep the last 30 days here; older items move to `BOARD-archive.m
 - [x] LED Galaxy Projector ($49.99 / $89.99) added to Shopify Tech Gadgets collection — 2026-05-15
 - [x] Remove fabricated social-proof copy (50k customers / 4.7★ / trend-verified) from redesigned codebase — commit `4c0c80f` on `claude/dreamy-ptolemy-d624d6` — 2026-05-15
 - [x] Visual verification on preview URL (home + /about) confirmed: Memorial Day banner present, fabricated stats gone — 2026-05-15
+- [x] DSers map Products 4, 5, 6 to AliExpress suppliers (Foreverlily LC, Stone's Store, Stone's Store) — 2026-05-15
+
+## Margin reference (captured from DSers mapping 2026-05-15)
+
+| Product | Cost | Sale | Real margin |
+|---|---|---|---|
+| Smart Posture Corrector | (existing) | $34.99 | 98% |
+| K-Beauty Collagen Sleeping Mask | $1.39 | $29.99 | ~95% |
+| LED Galaxy Projector | $2.73–$4.27 | $49.99 | 91–95% |
+| LED Red Light Therapy Face Mask | (existing) | $79.99 | 83% |
+| LED Blue Light Therapy Device | $10.11–$16.15 | $39.99 | 60–75% |
