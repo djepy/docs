@@ -23,9 +23,12 @@ Things added but not yet started. The manager triages from here.
 
 ### Noviqe — cutover blockers (must do before flipping noviqe.com)
 
-- [ ] **You personally** click-through preview URL end-to-end (homepage → product → cart → checkout) (@founder) [due: 2026-05-16]
-- [ ] Create new Vercel API token in dashboard, save to password manager (NEVER paste to any AI session) (@founder) [due: 2026-05-16]
-- [ ] Screenshot current `noviqe.com` for rollback reference (@founder) [due: 2026-05-16]
+- [ ] **CRITICAL: /api/products 503 bug** — 75% failure rate, products don't load. Investigation packet sent to dispatch; fix gated on dispatch's root-cause report (@dispatch via packet → @founder approval → @dispatch fix) [due: 2026-05-17]
+- [ ] Remove hardcoded "203 sold today" badge (`src/lib/trending-data.ts:160` + `Hero.tsx:236`) — FOUNDER APPROVED REMOVAL (@dispatch via packet) [due: 2026-05-16]
+- [ ] Remove all 5 fabricated testimonials from `app/page.tsx` — FOUNDER APPROVED REMOVAL (@dispatch via packet) [due: 2026-05-16]
+- [ ] **You personally** click-through preview URL end-to-end (homepage → product → cart → checkout) — AFTER API bug fixed (@founder) [due: 2026-05-17]
+- [ ] Create new Vercel API token in dashboard, save to password manager (NEVER paste to any AI session) (@founder) [due: 2026-05-17]
+- [ ] Screenshot current `noviqe.com` for rollback reference (@founder) [due: 2026-05-17]
 
 ### Noviqe — can happen before OR shortly after cutover
 
@@ -44,6 +47,7 @@ Things added but not yet started. The manager triages from here.
 - [ ] Validate / replace remaining AI-generated placeholder copy (About, founder bio, FAQs) (@content-creator) [due: 2026-05-21]
 - [ ] Audit and delete stale Vercel tokens (`noviqe-deploy` from 2026-04-16, `NOVIQE Deploy` team-scope from 2026-04-27) if no CI uses them (@founder) [due: 2026-05-22]
 - [ ] Confirm Vercel account email mismatch — `proshinycleaningservices@gmail.com` is correct owner (vs `djepy10@gmail.com` listed in build report) (@founder) [due: 2026-05-16]
+- [ ] **Legal-prep:** draft a "no fabricated marketing claims" compliance rubric — three batches of generated content already found (50k customers, 203 sold, 5 fake testimonials); this needs a recurring check, not one-off cleanup (@legal-prep) [due: 2026-05-25]
 
 ## Doing
 
@@ -72,6 +76,8 @@ Things shipped. Keep the last 30 days here; older items move to `BOARD-archive.m
 - [x] Remove fabricated social-proof copy (50k customers / 4.7★ / trend-verified) from redesigned codebase — commit `4c0c80f` on `claude/dreamy-ptolemy-d624d6` — 2026-05-15
 - [x] Visual verification on preview URL (home + /about) confirmed: Memorial Day banner present, fabricated stats gone — 2026-05-15
 - [x] DSers map Products 4, 5, 6 to AliExpress suppliers (Foreverlily LC, Stone's Store, Stone's Store) — 2026-05-15
+- [x] Footer contact email mismatch fixed: 12 occurrences of `hello@noviqe.com` replaced with `gefte@noviqe.com` across 6 files, commit `313f376` — 2026-05-15
+- [x] Pre-cutover homepage audit identified: 203-sold badge hardcoded, 5 fabricated testimonials, /api/products 503 bug — 2026-05-15
 
 ## Margin reference (captured from DSers mapping 2026-05-15)
 
